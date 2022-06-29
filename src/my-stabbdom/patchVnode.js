@@ -1,4 +1,5 @@
 import createElm from "./createElm";
+import updateChildren from "./updateChildren";
 
 export default function patchVnode(oldVnode,newVnode){
     // 判断新老虚拟节点是否是内存中的同一个对象
@@ -19,7 +20,11 @@ export default function patchVnode(oldVnode,newVnode){
         if(oldVnode.children&&oldVnode.children.length>0){
             // 若老虚拟节点有children属性，则说明无text属性
             // 此时是最复杂的情况，新老虚拟节点都有children
-            // 首个未处理的节点
+            
+            // updateChildren()
+            // 此时oldVnode.elm和newVnode.elm是同一个elm
+            updateChildren(oldVnode.elm,oldVnode.children,newVnode.children);
+           /*  // 首个未处理的节点
             let unvisitied_index = 0;
             for(let i=0; i<newVnode.children.length;i++){
                 let new_item = newVnode.children[i];
@@ -44,7 +49,7 @@ export default function patchVnode(oldVnode,newVnode){
                 }
                 // 但删除、更新、修改顺序之类的就不好处理了，所以这种方法不是最优解。
             
-            }
+            } */
 
         }else{
             // 若老虚拟节点无children属性，则说明老虚拟节点有text，是文字节点

@@ -12,6 +12,8 @@ let myVnode1 = h('section',{},[
     h('p',{key:'A'},'A'),
     h('p',{key:'B'},'B'),
     h('p',{key:'C'},'C'),
+    h('p',{key:'D'},'D'),
+    h('p',{key:'E'},'E'),
     // h('ol',{},[
     //     h('li',{},'D-1'),
     //     h('li',{},'D-2'),
@@ -26,12 +28,11 @@ patch(container,myVnode1);
 // let myVnode2 = h('div',{},'gua');
 // 新节点有children
 let myVnode2 = h('section',{},[
-    h('p',{key:'B'},'B'),
-    h('p',{key:'A'},'A'),
-    h('p',{key:'M'},'M'),
-    h('p',{key:'N'},'N'),
+    h('p',{key:'E'},'E'),
+    h('p',{key:'D'},'Ddd'),
     h('p',{key:'C'},'C'),
-    h('p',{key:'L'},'L'),
+    h('p',{key:'B'},'Bbb'),
+    h('p',{key:'A'},'A'),
     // h('ol',{},[
     //     h('li',{},'D1'),
     //     h('li',{},'D-2'),
