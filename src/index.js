@@ -28,15 +28,9 @@ patch(container,myVnode1);
 // let myVnode2 = h('div',{},'gua');
 // 新节点有children
 let myVnode2 = h('section',{},[
-    h('p',{key:'E'},'E'),
-    h('p',{key:'D'},'Ddd'),
-    h('p',{key:'C'},'C'),
-    h('p',{key:'B'},'Bbb'),
     h('p',{key:'A'},'A'),
-    // h('ol',{},[
-    //     h('li',{},'D1'),
-    //     h('li',{},'D-2'),
-    // ])
+    h('p',{key:'B'},'B'),
+    h('p',{key:'E'},'E'),
 ]);
 
 const btn = document.getElementById('btn');

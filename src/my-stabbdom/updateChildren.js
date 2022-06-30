@@ -47,4 +47,24 @@ export default function updateChildren(parentElm,oldCh,newCh){
             // 都没命中
         }
     }
+
+    // while结束后，若新/旧中有剩余节点，处理剩余节点
+    if(newStartIdx<=newEndIdx){
+        // 新虚拟节点中有剩余未处理的子节点，需要新增
+        console.log('待新增');
+        // 放在newEndIdx后面的节点的前面（是null或已经上树的节点）
+        const before = newCh[newEndIdx+1]==null?null:newCh[newEndIdx+1].elm;//null不能.elm
+        for(let i=newStartIdx;i<newEndIdx+1;i++){
+            // insertBefore可以自动识别null,如果是null会自动排到队尾，与appendChild一致
+            parentElm.insertBefore(createElm(newCh[i]),before);
+        }
+    }else if(oldStartIdx<=oldEndIdx){
+        console.log('待删除');
+        // 老虚拟节点中有剩余未处理的子节点，需要删除
+        for(let i=oldStartIdx;i<oldEndIdx+1;i++){
+            parentElm.removeChild(oldCh[i].elm);
+            oldCh[i].elm = undefined;//设不设undefined都行，因为会新的虚拟节点覆盖
+        }
+    }
+
 }
